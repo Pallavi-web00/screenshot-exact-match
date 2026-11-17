@@ -1,29 +1,16 @@
-# Welcome to your Lovable project
+# DevOps Manager LLP
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+A responsive business technology website built with React, TanStack Start, and Tailwind CSS.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Install dependencies with `bun install`, start the site with `bun run dev`, and run automated checks with `bun run test`.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+## Homepage
 
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+- The original Home, About, and Why Manager sections remain in place.
+- Whom We Serve presents education, start-ups, and e-commerce and retail.
+- What We Do presents business software, workflow automation, CRM and ERP, and AI-powered systems.
+- Industry and capability panels lead to the existing contact section; individual industry and solution pages are not included.
+- Homepage section content and in-page navigation targets live in `src/content/home.ts`.
+- Scroll reveals and reduced-motion support use the existing CSS-first animation system.
