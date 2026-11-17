@@ -1,0 +1,20 @@
+{
+  "source": "code-archive",
+  "source_artifact": "screenshot-to-scenescape-154-main.zip",
+  "capabilities": [
+    { "capability": "code", "source": "React/TanStack website source archive", "outcome": "Preserved the existing homepage, brand, framework and animation approach; added both requested sections and created the verified source archive.", "status": "verified", "next_action": null },
+    { "capability": "schema", "source": "No application schema or database detected", "outcome": "No database migration required for this static website", "status": "verified", "next_action": null },
+    { "capability": "records", "source": "No application records or export detected", "outcome": "No application data migration required", "status": "verified", "next_action": null },
+    { "capability": "auth identities", "source": "No authentication or user identities detected", "outcome": "No user migration required", "status": "verified", "next_action": null },
+    { "capability": "authorization", "source": "No authorization or role logic detected", "outcome": "No access-control migration required", "status": "verified", "next_action": null },
+    { "capability": "uploaded file bytes", "source": "Static website assets included in the uploaded source archive", "outcome": "Retained the existing website imagery and logo mark; installed the brand mark locally as the browser icon and added three original industry photos.", "status": "verified", "next_action": null },
+    { "capability": "external providers", "source": "No third-party service integrations detected", "outcome": "No external provider cutover required", "status": "verified", "next_action": null },
+    { "capability": "public endpoints", "source": "No public application endpoints detected", "outcome": "No endpoint migration required", "status": "verified", "next_action": null },
+    { "capability": "callbacks", "source": "No OAuth or external callbacks detected", "outcome": "No callback migration required", "status": "verified", "next_action": null },
+    { "capability": "webhooks", "source": "No webhooks detected", "outcome": "No webhook migration required", "status": "verified", "next_action": null },
+    { "capability": "schedules", "source": "No scheduled jobs detected", "outcome": "No schedule migration required", "status": "verified", "next_action": null },
+    { "capability": "secrets", "source": "No application environment variables or secrets detected", "outcome": "No secrets required", "status": "verified", "next_action": null },
+    { "capability": "cutover", "source": "No production service or application URL was provided", "outcome": "No service cutover requested; deliver the updated source project as a ZIP", "status": "verified", "next_action": null },
+    { "capability": "verification", "source": "Updated homepage and deliverable source archive", "outcome": "Four homepage tests passed. Desktop, tablet and mobile previews confirmed all seven cards, image loading, working section navigation, no horizontal overflow, and no page errors. The final ZIP was inspected.", "status": "verified", "next_action": null }
+  ]
+}
