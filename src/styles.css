@@ -900,3 +900,117 @@
     transition-delay: 0ms !important;
   }
 }
+
+@layer components {
+  .presence-map {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 1080px);
+    aspect-ratio: 2 / 1;
+    margin-inline: auto;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background:
+      radial-gradient(ellipse at 66% 34%, color-mix(in oklab, var(--brand-blue) 7%, transparent), transparent 40%),
+      radial-gradient(ellipse at 28% 76%, color-mix(in oklab, var(--brand-purple) 5%, transparent), transparent 38%),
+      var(--background);
+    box-shadow: var(--shadow-soft);
+  }
+  .presence-map__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .presence-map__graticule line { stroke: var(--border); stroke-width: 0.7; stroke-dasharray: 2 7; opacity: 0.45; }
+  .presence-map__land path {
+    fill: color-mix(in oklab, var(--surface) 86%, var(--brand-blue));
+    stroke: color-mix(in oklab, var(--brand-blue) 20%, var(--border));
+    stroke-width: 1.35;
+    stroke-linejoin: round;
+  }
+  .presence-map__network path {
+    fill: none;
+    stroke: url(#presence-network);
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    opacity: 0.72;
+  }
+  .presence-map__dots circle { fill: var(--brand-blue); opacity: 0.22; }
+  .presence-map__caption {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: calc(100% - 2rem);
+    color: var(--muted-foreground);
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+  .presence-map__caption svg { width: 0.85rem; height: 0.85rem; flex: 0 0 auto; color: var(--brand-blue); }
+  .presence-marker {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(calc(-50% + var(--marker-x, 0px)), calc(-50% + var(--marker-y, 0px)));
+    transition: opacity 250ms var(--ease-out), filter 250ms var(--ease-out);
+    transition-delay: var(--d, 0ms);
+  }
+  .presence-marker[data-muted="true"] { opacity: 0.76; }
+  .presence-marker__button {
+    position: relative;
+    z-index: 1;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid color-mix(in oklab, var(--brand-blue) 38%, var(--background));
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--background) 85%, transparent);
+    box-shadow: var(--shadow-soft);
+    transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out), border-color 250ms var(--ease-out);
+  }
+  .presence-marker__dot { display: block; width: 0.78rem; height: 0.78rem; border-radius: 9999px; background: var(--brand-blue); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand-blue) 14%, transparent); }
+  .presence-marker--purple .presence-marker__dot { background: var(--brand-purple); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand-purple) 14%, transparent); }
+  .presence-marker--red .presence-marker__dot { background: var(--brand-red); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand-red) 14%, transparent); }
+  .presence-marker--future .presence-marker__button { border: 1px dashed color-mix(in oklab, var(--brand-purple) 65%, var(--brand-blue)); }
+  .presence-marker--future .presence-marker__dot { background: var(--background); box-shadow: inset 0 0 0 2px var(--brand-purple); }
+  .presence-marker.is-active { z-index: 4; opacity: 1; }
+  .presence-marker.is-active .presence-marker__button { transform: scale(1.12); border-color: var(--brand-blue); box-shadow: var(--shadow-brand); }
+  .presence-marker--purple.is-active .presence-marker__button { border-color: var(--brand-purple); }
+  .presence-marker--red.is-active .presence-marker__button { border-color: var(--brand-red); }
+  .presence-marker--future.is-active .presence-marker__button { border-color: var(--brand-purple); }
+  .presence-marker__label {
+    margin-top: 0.1rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    background: color-mix(in oklab, var(--background) 88%, transparent);
+    color: var(--foreground);
+    font-size: 0.66rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 1px 5px color-mix(in oklab, var(--navy) 8%, transparent);
+  }
+  .presence-selected { min-height: 2.75rem; }
+  .presence-selected__dot { width: 0.65rem; height: 0.65rem; flex: 0 0 auto; border-radius: 50%; background: var(--brand-blue); }
+  .presence-selected__dot--purple { background: var(--brand-purple); }
+  .presence-selected__dot--red { background: var(--brand-red); }
+  .presence-selected__dot--future { background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple)); }
+  .presence-status { display: inline-flex; align-items: center; border-radius: 9999px; background: color-mix(in oklab, var(--brand-blue) 8%, var(--background)); padding: 0.35rem 0.7rem; color: var(--brand-blue); font-size: 0.75rem; font-weight: 700; }
+  .presence-status--future { background: color-mix(in oklab, var(--brand-purple) 8%, var(--background)); color: var(--brand-purple); }
+  .presence-location { min-height: 7.25rem; gap: 0.8rem; }
+  .presence-location--active { border-color: color-mix(in oklab, var(--brand-blue) 48%, var(--border)); box-shadow: var(--shadow-float); }
+  .presence-location__icon { display: inline-flex; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; align-items: center; justify-content: center; border-radius: 0.5rem; background: color-mix(in oklab, var(--brand-blue) 9%, var(--background)); color: var(--brand-blue); }
+  .presence-location__icon svg { width: 1.15rem; height: 1.15rem; }
+  .presence-location__icon--purple { background: color-mix(in oklab, var(--brand-purple) 9%, var(--background)); color: var(--brand-purple); }
+  .presence-location__icon--red { background: color-mix(in oklab, var(--brand-red) 9%, var(--background)); color: var(--brand-red); }
+  .presence-location__icon--future { background: color-mix(in oklab, var(--brand-purple) 8%, var(--background)); color: var(--brand-purple); }
+  .presence-location__status { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.65rem; color: var(--muted-foreground); font-size: 0.72rem; font-weight: 600; }
+  .presence-location__status-dot { width: 0.42rem; height: 0.42rem; border-radius: 50%; background: var(--brand-blue); }
+  .presence-location__status--future .presence-location__status-dot { background: var(--brand-purple); }
+  @media (max-width: 640px) {
+    .presence-map { aspect-ratio: 1.22 / 1; }
+    .presence-map__svg { transform: scale(1.16); }
+    .presence-marker__button { width: 2.5rem; height: 2.5rem; }
+    .presence-marker__label { font-size: 0.61rem; }
+    .presence-map__caption { right: 0.65rem; bottom: 0.55rem; font-size: 0.58rem; }
+  }
+}

@@ -64,6 +64,54 @@ export const about = {
   modules: ["CRM", "ERP", "Workflows", "Analytics", "AI Engine", "Finance"],
 };
 
+export const globalPresence = {
+  eyebrow: "Our Global Presence",
+  heading: { lead: "Connecting Businesses.", highlight: "Expanding Possibilities." },
+  body: "With a growing international presence, DevOps Manager LLP brings technology and business automation solutions closer to organizations across different markets.",
+  locations: [
+    {
+      id: "dubai",
+      city: "Dubai",
+      country: "United Arab Emirates",
+      status: "Operational Location",
+      latitude: 25.2048,
+      longitude: 55.2708,
+      tone: "blue",
+      markerOffset: { x: 0, y: 0 },
+    },
+    {
+      id: "mangalore",
+      city: "Mangalore",
+      country: "India",
+      status: "Operational Location",
+      latitude: 12.9141,
+      longitude: 74.856,
+      tone: "purple",
+      markerOffset: { x: -30, y: 10 },
+    },
+    {
+      id: "bangalore",
+      city: "Bangalore",
+      country: "India",
+      status: "Operational Location",
+      latitude: 12.9716,
+      longitude: 77.5946,
+      tone: "red",
+      markerOffset: { x: 30, y: -10 },
+    },
+    {
+      id: "california",
+      city: "California",
+      country: "United States",
+      status: "Coming Soon",
+      latitude: 36.7783,
+      longitude: -119.4179,
+      tone: "future",
+      markerOffset: { x: 0, y: 0 },
+    },
+  ],
+} as const;
+
 export type Feature = {
   num: string;
   title: string;

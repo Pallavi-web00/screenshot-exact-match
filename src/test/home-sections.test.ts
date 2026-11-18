@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { industries, whatWeDo } from "@/content/home";
+import { globalPresence, industries, whatWeDo } from "@/content/home";
 
 const solutionPanelIds = [
   "business-software",
@@ -10,6 +10,15 @@ const solutionPanelIds = [
 ];
 
 describe("homepage industry and solution sections", () => {
+  it("lists the three operational locations and California as coming soon", () => {
+    expect(globalPresence.locations.map(({ city, country, status }) => [city, country, status])).toEqual([
+      ["Dubai", "United Arab Emirates", "Operational Location"],
+      ["Mangalore", "India", "Operational Location"],
+      ["Bangalore", "India", "Operational Location"],
+      ["California", "United States", "Coming Soon"],
+    ]);
+  });
+
   it("lists education, start-ups, and e-commerce & retail", () => {
     expect(industries.panels.map((panel) => panel.name)).toEqual([
       "Education",
